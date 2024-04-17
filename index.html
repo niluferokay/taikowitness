@@ -1,8 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  </head>
-  <body>
-    <script src="niluwitness-46820.json"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <pre id="jsonContent">Loading...</pre>
+    <script>
+        fetch('niluwitness-46820.json')
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to load the JSON file.');
+            }
+        })
+        .then(json => {
+            document.getElementById('jsonContent').textContent = JSON.stringify(json, null, 2);
+        })
+        .catch(error => {
+            document.getElementById('jsonContent').textContent = 'Error: ' + error.message;
+        });
+    </script>
+</body>
 </html>
